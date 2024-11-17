@@ -1,0 +1,58 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="formcss.css">
+        <script>
+            function validateForm(event) {
+                event.preventDefault(); 
+                const firstName = document.forms["registerForm"]["firstName"].value;
+                const secondName = document.forms["registerForm"]["secondName"].value;
+                const email = document.forms["registerForm"]["email"].value;
+                const contact = document.forms["registerForm"]["mob"].value;
+                const checkbox = document.forms["registerForm"]["interest"].checked;
+                const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+                const contactPattern = /^[0-9]{10}$/;
+                if (!firstName) {
+                    alert("First Name is required.");
+                    return false;
+                }
+                if (!secondName) {
+                    alert("Second Name is required.");
+                    return false;
+                }
+                if (!email) {
+                    alert("Email is required.");
+                    return false;
+                }
+                if (!emailPattern.test(email)) {
+                    alert("Please enter a valid email address.");
+                    return false;
+                }
+                if (!contact) {
+                    alert("Contact number is required.");
+                    return false;
+                }
+                if (!contactPattern.test(contact)) {
+                    alert("Please enter a valid 10-digit contact number.");
+                    return false;
+                }
+                if (!checkbox) {
+                    alert("Please check the box to indicate interest in WAVES.");
+                    return false;
+                }
+                alert("Form submitted successfully!");
+                return true;
+            }
+        </script>
+    </head>
+    <body>
+        <form name="registerForm" onsubmit="return validateForm(event)">
+            <h1>REGISTER</h1>
+            <p><input type="text" name="firstName" id="box" placeholder="First Name"></p>
+            <p><input type="text" name="secondName" id="box" placeholder="Second Name"></p>
+            <p><input type="email" name="email" id="box" placeholder="Enter e-mail"></p>
+            <p><input type="text" name="mob" id="box" placeholder="Contact"></p>
+            <h3><input type="checkbox" name="interest">I am interested at WAVES, Please call me.</h3>
+            <input type="submit" value="SEND">
+        </form>
+    </body>
+</html>
